@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   // Axios instance inside context
   const api = axios.create({
-    baseURL: "http://localhost:3000/api",
+    baseURL: "https://auth-task-backend-qq71.onrender.com/api",
   });
 
   api.interceptors.request.use((req) => {

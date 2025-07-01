@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../Api";
 import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
 
 export default function Register() {
   const [form, setForm] = useState({ username: "", password: "" });
   const navigate = useNavigate();
+    const { api, login } = useAuth()
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await API.post("/users/register", form);
-      toast.success(data.msg)
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("username", data.username);
+      const { data } = await api.post("/users/register", form);
+      toast.success(data.msg);
+      login(data.token, data.username);
       navigate("/dashboard");
     } catch (err) {
       toast.error(err.response?.data?.msg || "Registration failed");
