@@ -16,7 +16,7 @@ export default function Register() {
       const { data } = await api.post("/users/register", form);
       toast.success(data.msg);
       login(data.token, data.username);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       toast.error(err.response?.data?.msg || "Registration failed");
     }

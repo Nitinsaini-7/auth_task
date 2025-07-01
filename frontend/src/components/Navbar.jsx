@@ -9,7 +9,7 @@ const Navbar = () => {
     toast.success("Logout Successfully")
     localStorage.removeItem("token");
     localStorage.removeItem("username");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -23,7 +23,7 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <Link to="/">Login</Link>
+            <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
           </>
         )}

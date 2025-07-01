@@ -42,7 +42,7 @@ export default function AllUsers() {
             </tr>
           ))}
           {users.length === 0 && (
-            <tr><td colSpan="2" className="text-center p-4">No users found.</td></tr>
+            <tr><td colSpan="2" className="text-center p-4">Loading...</td></tr>
           )}
         </tbody>
       </table>

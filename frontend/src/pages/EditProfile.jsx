@@ -12,7 +12,7 @@ export default function EditProfile() {
      
       localStorage.removeItem("token");
       localStorage.removeItem("username");
-      navigate("/");
+      navigate("/login");
     };
 
   const updateProfile = async (e) => {

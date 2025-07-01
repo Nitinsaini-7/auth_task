@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   // Axios instance inside context
   const api = axios.create({
-    baseURL: "https://auth-task-backend-qq71.onrender.com/api",
+    baseURL: import.meta.env.VITE_API_BASE_URL
   });
 
   api.interceptors.request.use((req) => {

@@ -16,7 +16,7 @@ export default function Login() {
       const { data } = await api.post("/users/login", form);
       toast.success(data.msg);
       login(data.token, data.username);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       toast.error(err.response?.data?.msg || "Login failed");
     }
