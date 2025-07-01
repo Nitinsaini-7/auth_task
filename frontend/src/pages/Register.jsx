@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext";
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Register() {
   const [form, setForm] = useState({ username: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-    const { api, login } = useAuth()
-  
+  const { api, login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,14 +34,22 @@ export default function Register() {
           onChange={(e) => setForm({ ...form, username: e.target.value })}
           className="w-full px-4 py-2 border rounded"
         />
-        <input
-          type="password"
-          required
-          placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-          className="w-full px-4 py-2 border rounded"
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            required
+            placeholder="Password"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            className="w-full px-4 py-2 border rounded pr-10"
+          />
+          <span
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-sm text-gray-600"
+          >
+            {showPassword ? <EyeOff /> : <Eye />}
+          </span>
+        </div>
         <button type="submit" className="w-full bg-green-600 text-white px-4 py-2 rounded">
           Register
         </button>
