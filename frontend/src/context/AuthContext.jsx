@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   // Axios instance inside context
   const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL
+    baseURL: import.meta.env.VITE_BACKEND_URL
   });
 
   api.interceptors.request.use((req) => {
